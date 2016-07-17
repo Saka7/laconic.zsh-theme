@@ -1,2 +1,9 @@
-# laconic.zsh-theme-
-Simple theme for zsh
+# Laconic
+Simple oh-my-zsh theme
+
+# Instalation
+
+# Screenshots
+
+# License
+Laconic is released under ![MIT License]()
