@@ -27,7 +27,7 @@ source ~/.zshrc
 ## Screenshots
 After instalation your terminal should looks like this
 
-![Laconic theme](laconic.zsh-theme.png)
+![Laconic theme](laconic.zsh-theme.png) 
 
 ## License
-Laconic is released under the [MIT License](https://opensource.org/licenses/MIT). 
+Laconic theme is released under the [MIT License](https://opensource.org/licenses/MIT). 
