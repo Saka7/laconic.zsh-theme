@@ -11,6 +11,10 @@ cd ~/.oh-my-zsh/custom/themes
 ```bash
 git clone https://github.com/Saka7/laconic.zsh-theme.git
 ```
+- Delete useless files
+```bash
+rm -f LISCENSE README.md laconic.zsh-theme.png 
+```
 - Change theme in your ~/.zshrc file
 ```bash
 ZSH_THEME="laconic"
@@ -21,7 +25,8 @@ source ~/.zshrc
 ```
 
 ## Screenshots
-After instalation you terminal should looks like this
+After instalation your terminal should looks like this
+
 ![Laconic theme](laconic.zsh-theme.png)
 
 ## License
