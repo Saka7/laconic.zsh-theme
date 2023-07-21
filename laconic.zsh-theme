@@ -2,22 +2,29 @@
 # Author saka7
 # Year 2016
 
-# Git info
-local git_info='$(git_prompt_info)'
-ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg_bold[cyan]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%})"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} x"
-ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}+"
+NEWLINE=$'\n'
 
-# If exit status is 0 prints green arrow (>) else red one 
-local return_status="%(?:%{$fg_bold[green]%}>:%{$fg_bold[red]%}>)%{$reset_color%}"
+function error_symbol() {
+    echo "%{$fg_bold[red]%}$1"
+}
 
-# Current directory in white square bracket
-# if user is not root else in red ones
+function success_symbol() {
+    echo "%{$fg_bold[green]%}$1"
+}
+
+local GIT_INFO='$(git_prompt_info)'
+ZSH_THEME_GIT_PROMPT_PREFIX=" | %{$fg_bold[cyan]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} •"
+
+local RETURN_STATUS="%(?:$(success_symbol)└➤ :$(error_symbol)└➤%{$reset_color%}"
+local LINE_JOINT="%(?:$(success_symbol)┌:$(error_symbol)┌)"
+
 if [[ $EUID -ne 0 ]]; then
-  local working_dir="%{$fg_bold[white]%}[%{$fg_bold[yellow]%}%c%{$fg_bold[white]%}]%{$reset_color%}"
+  local WORKING_DIR="$LINE_JOINT %{$fg_bold[yellow]%}%~%{$reset_color%}"
 else
-  local working_dir="%{$fg_bold[red]%}[%{$fg_bold[yellow]%}%c%{$fg_bold[red]%}]%{$reset_color%}"
+  local WORKING_DIR="$LINE_JOINT %{$fg_bold[red]%}%~%{$reset_color%}"
 fi
 
-PROMPT="${working_dir}${git_info}${return_status} "
+PROMPT=" ${WORKING_DIR}${GIT_INFO}${NEWLINE} ${RETURN_STATUS} "
+
